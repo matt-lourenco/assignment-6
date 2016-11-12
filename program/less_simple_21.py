@@ -6,7 +6,6 @@ from __future__ import division
 from numpy import random
 import ui
 import time
-from scene import *
 
 DECK = ['card:ClubsA', 'card:DiamondsA', 'card:HeartsA', 'card:SpadesA', 'card:Clubs2', 'card:Diamonds2', 'card:Hearts2', 'card:Spades2', 'card:Clubs3', 'card:Diamonds3', 'card:Hearts3', 'card:Spades3', 'card:Clubs4', 'card:Diamonds4', 'card:Hearts4', 'card:Spades4', 'card:Clubs5', 'card:Diamonds5', 'card:Hearts5', 'card:Spades5', 'card:Clubs6', 'card:Diamonds6', 'card:Hearts6', 'card:Spades6', 'card:Clubs7', 'card:Diamonds7', 'card:Hearts7', 'card:Spades7', 'card:Clubs8', 'card:Diamonds8', 'card:Hearts8', 'card:Spades8', 'card:Clubs9', 'card:Diamonds9', 'card:Hearts9', 'card:Spades9', 'card:Clubs10', 'card:Diamonds10', 'card:Hearts10', 'card:Spades10', 'card:ClubsJ', 'card:DiamondsJ', 'card:HeartsJ', 'card:SpadesJ', 'card:ClubsQ', 'card:DiamondsQ', 'card:HeartsQ', 'card:SpadesQ', 'card:ClubsK', 'card:DiamondsK', 'card:HeartsK', 'card:SpadesK']
 
@@ -22,7 +21,7 @@ card_4_value = 100
 card_5_value = 100
 card_6_value = 100
 
-money = 0
+money = 100
 bet = 0
 
 bet_locked = False
@@ -36,53 +35,6 @@ card_6_used = False
 
 ace_is_1 = False
 ace_is_11 = False
-
-def set_up():
-    #When this is called it resets/sets up the game
-    
-    global player_cards
-    global computer_cards
-    player_cards = []
-    computer_cards = []
-    
-    view['card_1_imageview'].image = ui.Image('card:BackGreen5')
-    view['card_2_imageview'].image = ui.Image('card:BackGreen5')
-    view['card_3_imageview'].image = ui.Image('card:BackGreen5')
-    view['card_4_imageview'].image = ui.Image('card:BackGreen5')
-    view['card_5_imageview'].image = ui.Image('card:BackGreen5')
-    view['card_6_imageview'].image = ui.Image('card:BackGreen5')
-    
-    global card_1_flipped
-    global card_2_flipped
-    global card_3_flipped
-    global card_4_flipped
-    global card_5_flipped
-    global card_6_used
-    card_1_flipped = False
-    card_2_flipped = False
-    card_3_flipped = False
-    card_4_flipped = False
-    card_5_flipped = False
-    card_6_used = False
-    
-    global ace_is_1
-    global ace_is_11
-    ace_is_1 = False
-    ace_is_11 = False
-    
-    global money
-    global bet_locked
-    money = 100
-    bet_locked = False
-    
-    view['money_label'].text = ' Total Money: $' + str(money)
-    
-    view['bet_label'].text = ' Bet = '
-    view['bet_textfield'].text = ''
-    
-    view['reply_label'].text = ''
-    
-    view['card_6_instructions_label'].text = 'Press this card in order to recieve a third card.'
 
 def randomize_card(card_number = ''):
     #When called this randomizes the card value of the inputted number and verifies that it is not the same as the other values
@@ -181,7 +133,6 @@ def check_bet():
     global bet
     global bet_locked
     bet = view['bet_textfield'].text
-    print(bet)
     try:
         bet = int(bet)
         if bet <= money and bet > 0:
@@ -248,12 +199,13 @@ def flip_card_touch_up_inside(sender):
         check_for_ace(card_name = 'card_5')
     elif sender.name == 'card_6_button' and card_6_used == False:
         if card_1_flipped == False and card_2_flipped == False and card_3_flipped == False:
-            view['card_6_imageview'].image = ui.Image(card_6_value)
             view['card_6_instructions_label'].text = ''
+            view['card_6_imageview'].alpha = 1
+            view['card_6_imageview'].image = ui.Image(card_6_value)
             card_6_used = True
             check_for_ace(card_name = 'card_6')
 
-def main_flow():
+def set_up_cards():
     
     global card_1_value
     global card_2_value
@@ -337,9 +289,9 @@ def find_winner():
 
 def redraw_cards():
     
-    for clean_up in range(0, 2):
-        view['reply_label'].text = view['reply_label'].text + '\n...'
-        time.sleep(1.5)
+    for clean_up in range(0, 5):
+        view['reply_label'].text = view['reply_label'].text + '.'
+        time.sleep(0.4)
     
     global player_cards
     global computer_cards
@@ -352,6 +304,8 @@ def redraw_cards():
     view['card_4_imageview'].image = ui.Image('card:BackGreen5')
     view['card_5_imageview'].image = ui.Image('card:BackGreen5')
     view['card_6_imageview'].image = ui.Image('card:BackGreen5')
+    
+    view['card_6_imageview'].alpha = 0.5
     
     global card_1_flipped
     global card_2_flipped
@@ -383,7 +337,7 @@ def redraw_cards():
     
     view['card_6_instructions_label'].text = 'Press this card in order to recieve a third card.'
     
-    main_flow()
+    set_up_cards()
 
 @ui.in_background
 
@@ -408,6 +362,7 @@ def check_touch_up_inside(sender):
             else:
                 money = money - bet
             if money == 0:
+                time.sleep(2)
                 view['money_label'].text = ' Total Money: ' + str(money)
                 view['reply_label'].text = "You're out of money. Press restart to play again."
             else:
@@ -431,25 +386,20 @@ def check_touch_up_inside(sender):
         else:
             money = money - bet
         if money == 0:
-            time.sleep(3)
+            time.sleep(2)
             view['money_label'].text = ' Total Money: ' + str(money)
             view['reply_label'].text = view['reply_label'].text + "\nYou're out of money. Press restart to play again."
         else:
             redraw_cards()
 
-@ui.in_background
-
 def restart_touch_up_inside(sender):
     #restarts the game
+    global money
     view['reply_label'].text = 'Restarting'
-    for load_restart in range(0, 3):
-        view['reply_label'].text = view['reply_label'].text + ' . '
-        time.sleep(1/3)
-    set_up()
-    main_flow()
+    money = 100
+    redraw_cards()
 
 view = ui.load_view()
 view.present('fullscreen')
 
-set_up()
-main_flow()
+redraw_cards()
