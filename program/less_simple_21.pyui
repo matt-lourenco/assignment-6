@@ -1,0 +1,442 @@
+[
+  {
+    "selected" : false,
+    "frame" : "{{0, 0}, {1024, 768}}",
+    "class" : "View",
+    "nodes" : [
+      {
+        "selected" : false,
+        "frame" : "{{682, 400}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_6_imageview",
+          "uuid" : "F09E6AED-8592-400B-A927-D9D73DCC16BB"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{702, 400}, {100, 210}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "name" : "card_6_instructions_label",
+          "text_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "8F44472A-82CC-45BA-8C7D-304D65D234B0",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Press this card in order to recieve a third card.",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{202, 60}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_1_imageview",
+          "uuid" : "DEB2E2C2-7D63-471A-99DD-1C3451815BB8"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{442, 60}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_2_imageview",
+          "uuid" : "ECEE0277-C2F7-4178-B438-D7D803093905"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{682, 60}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_3_imageview",
+          "uuid" : "B37CCB3A-8742-4CFB-AAF0-FA7AACDF3DEB"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{202, 400}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_4_imageview",
+          "uuid" : "C26969E8-41F1-4EBC-B8A4-7C9364441957"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{442, 400}, {140, 210}}",
+        "class" : "ImageView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "frame" : "{{462, 334}, {100, 100}}",
+          "image_name" : "iob:grid_256",
+          "class" : "ImageView",
+          "name" : "card_5_imageview",
+          "uuid" : "DE3C3046-9D42-4EEE-9E86-0D5B7064ECC5"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{432, 10}, {160, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "font_name" : "<System>",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "F83294C6-409E-48DA-AF00-C86771D2C8CF",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Opponent's Cards",
+          "name" : "oppenents_cards_label",
+          "font_size" : 18
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{432, 630}, {160, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "font_name" : "<System>",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "EA5A415C-2BD1-4E89-BC5F-CEBA13E3C48B",
+          "class" : "Label",
+          "alignment" : "center",
+          "text" : "Your Cards",
+          "name" : "player_cards_label",
+          "font_size" : 18
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{342, 278}, {340, 114}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "border_width" : 1,
+          "font_size" : 18,
+          "font_name" : "<System>",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "class" : "Label",
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "text" : "",
+          "alignment" : "center",
+          "uuid" : "C942EFC3-FA83-4D89-BABA-BBF6B6C42CCB",
+          "name" : "reply_label",
+          "corner_radius" : 0
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{63, 656}, {113, 41}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "border_width" : 1,
+          "action" : "restart_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "Restart",
+          "uuid" : "EB66CB09-8773-445E-AB35-1D5A23BAF2EB",
+          "border_color" : "RGBA(0.600000,0.733333,1.000000,1.000000)",
+          "class" : "Button",
+          "corner_radius" : 0,
+          "name" : "restart_button",
+          "font_size" : 26
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{26, 278}, {198, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "border_width" : 1,
+          "name" : "money_label",
+          "class" : "Label",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "text" : " Total Money: ",
+          "alignment" : "left",
+          "uuid" : "2BEF74C8-E45F-4DF2-A7E4-46CC1DF68DB1",
+          "corner_radius" : 0,
+          "font_size" : 18,
+          "font_name" : "<System>"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{26, 238}, {40, 32}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "name" : "bet_label",
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "915A68E3-BCB5-428E-B5E5-39CB7E65F09F",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : " Bet:",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{67, 238}, {125, 32}}",
+        "class" : "TextField",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "uuid" : "6B8D1F3F-BCC3-4FC5-A7E7-63E675A61B41",
+          "corner_radius" : 0,
+          "frame" : "{{412, 368}, {200, 32}}",
+          "secure" : false,
+          "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "border_width" : 1,
+          "alignment" : "right",
+          "autocorrection_type" : "default",
+          "text_color" : "RGBA(0.482353,0.854902,0.482353,1.000000)",
+          "placeholder" : "$$$$$$$$$$",
+          "font_name" : "<System>",
+          "spellchecking_type" : "default",
+          "class" : "TextField",
+          "name" : "bet_textfield",
+          "font_size" : 17
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{863, 448}, {100, 49}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "ace_button_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "Ace = 1",
+          "class" : "Button",
+          "uuid" : "849AEB45-1E11-46B4-894F-158385D4A2A1",
+          "font_size" : 21,
+          "name" : "ace_1_button"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{863, 512}, {100, 49}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "ace_button_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "Ace = 11",
+          "class" : "Button",
+          "uuid" : "849AEB45-1E11-46B4-894F-158385D4A2A1",
+          "font_size" : 21,
+          "name" : "ace_11_button"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{202, 60}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_1_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{442, 60}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_2_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{682, 60}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_3_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{202, 400}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_4_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{442, 400}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_5_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{682, 400}, {140, 210}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "flex" : "",
+          "action" : "flip_card_touch_up_inside",
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "",
+          "uuid" : "74C0E124-0645-45A4-B0A6-EF11655C74D3",
+          "class" : "Button",
+          "name" : "card_6_button",
+          "font_size" : 15
+        }
+      },
+      {
+        "selected" : true,
+        "frame" : "{{863, 569}, {100, 73}}",
+        "class" : "Label",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "name" : "ace_value_label",
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "1F4C0DD0-5FDA-40DC-8D54-16BC507B5B9C",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "First ace will be worth: ",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        }
+      },
+      {
+        "selected" : false,
+        "frame" : "{{63, 607}, {113, 40}}",
+        "class" : "Button",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "action" : "check_touch_up_inside",
+          "border_width" : 1,
+          "frame" : "{{472, 368}, {80, 32}}",
+          "title" : "Check",
+          "class" : "Button",
+          "uuid" : "849AEB45-1E11-46B4-894F-158385D4A2A1",
+          "border_color" : "RGBA(0.600000,0.733333,1.000000,1.000000)",
+          "corner_radius" : 0,
+          "font_size" : 26,
+          "name" : "check_cards_button"
+        }
+      }
+    ],
+    "attributes" : {
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    }
+  }
+]
