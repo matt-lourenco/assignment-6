@@ -213,7 +213,7 @@
       },
       {
         "selected" : false,
-        "frame" : "{{26, 238}, {40, 32}}",
+        "frame" : "{{26, 201}, {166, 32}}",
         "class" : "Label",
         "nodes" : [
 
@@ -225,14 +225,14 @@
           "uuid" : "915A68E3-BCB5-428E-B5E5-39CB7E65F09F",
           "class" : "Label",
           "alignment" : "left",
-          "text" : " Bet:",
+          "text" : " Bet = ",
           "font_size" : 18,
           "font_name" : "<System>"
         }
       },
       {
         "selected" : false,
-        "frame" : "{{67, 238}, {125, 32}}",
+        "frame" : "{{26, 238}, {166, 32}}",
         "class" : "TextField",
         "nodes" : [
 
@@ -246,8 +246,8 @@
           "border_width" : 1,
           "alignment" : "right",
           "autocorrection_type" : "default",
-          "text_color" : "RGBA(0.482353,0.854902,0.482353,1.000000)",
-          "placeholder" : "$$$$$$$$$$",
+          "text_color" : "RGBA(0.034598,0.061321,0.034598,1.000000)",
+          "placeholder" : "$$$$$$$$$$$$$$",
           "font_name" : "<System>",
           "spellchecking_type" : "default",
           "class" : "TextField",
@@ -393,7 +393,7 @@
         }
       },
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{863, 569}, {100, 73}}",
         "class" : "Label",
         "nodes" : [
@@ -428,6 +428,28 @@
           "corner_radius" : 0,
           "font_size" : 26,
           "name" : "check_cards_button"
+        }
+      },
+      {
+        "selected" : true,
+        "frame" : "{{26, 10}, {166, 250}}",
+        "class" : "TextView",
+        "nodes" : [
+
+        ],
+        "attributes" : {
+          "uuid" : "6C57A848-F6F2-4DD2-A820-B8CE3C7481DE",
+          "flex" : "WH",
+          "frame" : "{{412, 284}, {200, 200}}",
+          "editable" : true,
+          "alignment" : "left",
+          "autocorrection_type" : "default",
+          "text" : "Bet Rules:\n-bets must be less than your total money but more than 0\n-bets must be integers",
+          "font_name" : "<System>",
+          "spellchecking_type" : "default",
+          "class" : "TextView",
+          "name" : "bet_explanation_textview",
+          "font_size" : 17
         }
       }
     ],

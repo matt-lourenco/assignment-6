@@ -23,6 +23,9 @@ card_5_value = 100
 card_6_value = 100
 
 money = 0
+bet = 0
+
+bet_locked = False
 
 card_1_flipped = False
 card_2_flipped = False
@@ -68,9 +71,14 @@ def set_up():
     ace_is_11 = False
     
     global money
+    global bet_locked
     money = 100
+    bet_locked = False
     
     view['money_label'].text = ' Total Money: $' + str(money)
+    
+    view['bet_label'].text = ' Bet = '
+    view['bet_textfield'].text = ''
     
     view['reply_label'].text = ''
     
@@ -126,44 +134,46 @@ def ace_button_touch_up_inside(sender):
 
 def check_for_ace():
     global player_cards
-    print('started check for ace')
     if card_4_flipped == True and card_5_flipped == True:
-        print('.')
         for ace_check in range(0, 2):
-           print('..')
-           print(player_cards[ace_check])
            if player_cards[ace_check] == 1:
-               print('...')
                view['reply_label'].text = 'Would you like your first ace to be 1 or 11? All subsequent aces will be 1 since two 11s will bring you over 21.'
                while True:
                    if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
-                       print('ace is 1')
                        break
                    elif ace_is_1 == True:
-                       print('ace is 1')
                        break
                    elif ace_is_11 == True:
-                       print('ace is 11')
                        player_cards[ace_check] = 11
                        break
     if card_4_flipped == True and card_5_flipped == True and card_6_used == True:
-        print('.')
         for ace_check in range(0, 3):
-            print('..')
             if player_cards[ace_check] == 1:
-                print('...')
                 view['reply_label'].text = 'Would you like your first ace to be 1 or 11? All subsequent aces will be 1 since two 11s will bring you over 21.'
                 while True:
                     if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
-                        print('ace is 1')
                         break
                     elif ace_is_1 == True:
-                        print('ace is 1')
                         break
                     elif ace_is_11 == True:
                         player_cards[ace_check] = 11
-                        print('ace is 11')
                         break
+
+def check_bet():
+    global bet
+    global bet_locked
+    bet = view['bet_textfield'].text
+    print(bet)
+    try:
+        bet = int(bet)
+        if bet <= money and bet > 0:
+            view['bet_label'].text = ' Bet = ' + str(bet)
+            bet_locked = True
+            return True
+        else:
+            return False
+    except:
+        return False
 
 def flip_card_touch_up_inside(sender):
     global computer_cards_flipped	
@@ -175,14 +185,35 @@ def flip_card_touch_up_inside(sender):
     global card_6_used
     
     if sender.name == 'card_1_button':
-        view['card_1_imageview'].image = ui.Image(card_1_value)
-        card_1_flipped = True
+        if bet_locked == False:
+            if check_bet():
+                view['card_1_imageview'].image = ui.Image(card_1_value)
+                card_1_flipped = True
+            else:
+                view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
+        else:
+            view['card_1_imageview'].image = ui.Image(card_1_value)
+            card_1_flipped = True
     elif sender.name == 'card_2_button':
-        view['card_2_imageview'].image = ui.Image(card_2_value)
-        card_2_flipped = True
+        if bet_locked == False:
+            if check_bet():
+                view['card_2_imageview'].image = ui.Image(card_2_value)
+                card_2_flipped = True
+            else:
+                view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
+        else:
+            view['card_2_imageview'].image = ui.Image(card_2_value)
+            card_2_flipped = True
     elif sender.name == 'card_3_button':
-        view['card_3_imageview'].image = ui.Image(card_3_value)
-        card_3_flipped = True
+        if bet_locked == False:
+            if check_bet():
+                view['card_3_imageview'].image = ui.Image(card_3_value)
+                card_3_flipped = True
+            else:
+                view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
+        else:
+            view['card_3_imageview'].image = ui.Image(card_3_value)
+            card_3_flipped = True
     elif sender.name == 'card_4_button':
         view['card_4_imageview'].image = ui.Image(card_4_value)
         card_4_flipped = True
@@ -224,6 +255,14 @@ def main_flow():
     
     computer_cards = [DECK_VALUE[card_1_value], DECK_VALUE[card_2_value], DECK_VALUE[card_3_value]]
     player_cards = [DECK_VALUE[card_4_value], DECK_VALUE[card_5_value], DECK_VALUE[card_6_value]]
+    
+    check_startup_bet = view['bet_textfield'].text
+    if check_startup_bet == '':
+        view['reply_label'].text = "Please enter a bet"
+    try:
+        check_startup_bet = int(check_startup_bet)
+    except:
+        view['reply_label'].text = "Please enter a bet that is a whole number."
 
 def find_winner():
     #finds the winner
@@ -270,20 +309,111 @@ def find_winner():
         view['reply_label'].text = "You Won! \n Opponent's total: " + str(computer_cards_total) + "\n Your total: " + str(player_cards_total)
         return True
 
+@ui.in_background
+
+def redraw_cards():
+    
+    for clean_up in range(0, 2):
+        view['reply_label'].text = view['reply_label'].text + '\n...'
+        time.sleep(1.5)
+    
+    global player_cards
+    global computer_cards
+    player_cards = []
+    computer_cards = []
+    
+    view['card_1_imageview'].image = ui.Image('card:BackGreen5')
+    view['card_2_imageview'].image = ui.Image('card:BackGreen5')
+    view['card_3_imageview'].image = ui.Image('card:BackGreen5')
+    view['card_4_imageview'].image = ui.Image('card:BackGreen5')
+    view['card_5_imageview'].image = ui.Image('card:BackGreen5')
+    view['card_6_imageview'].image = ui.Image('card:BackGreen5')
+    
+    global card_1_flipped
+    global card_2_flipped
+    global card_3_flipped
+    global card_4_flipped
+    global card_5_flipped
+    global card_6_used
+    card_1_flipped = False
+    card_2_flipped = False
+    card_3_flipped = False
+    card_4_flipped = False
+    card_5_flipped = False
+    card_6_used = False
+    
+    global ace_is_1
+    global ace_is_11
+    ace_is_1 = False
+    ace_is_11 = False
+    
+    global bet_locked
+    bet_locked = False
+    
+    view['money_label'].text = ' Total Money: $' + str(money)
+    
+    view['bet_label'].text = ' Bet = '
+    view['bet_textfield'].text = ''
+    
+    view['reply_label'].text = ''
+    
+    view['card_6_instructions_label'].text = 'Press this card in order to recieve a third card.'
+    
+    view['ace_value_label'].text = 'First ace will be worth: '
+    
+    main_flow()
+
+@ui.in_background
+
 def check_touch_up_inside(sender):
-    if card_1_flipped == False:
-        flip_card_touch_up_inside(view['card_1_button'])
-    if card_2_flipped == False:
-        flip_card_touch_up_inside(view['card_2_button'])
-    if card_3_flipped == False:
-        flip_card_touch_up_inside(view['card_3_button'])
-    if card_4_flipped == False:
-        flip_card_touch_up_inside(view['card_4_button'])
-    if card_5_flipped == False:
-        flip_card_touch_up_inside(view['card_5_button'])
+    global money
     
-    find_winner()
-    
+    if bet_locked == False:
+        if check_bet():
+            if card_1_flipped == False:
+                flip_card_touch_up_inside(view['card_1_button'])
+            if card_2_flipped == False:
+                flip_card_touch_up_inside(view['card_2_button'])
+            if card_3_flipped == False:
+                flip_card_touch_up_inside(view['card_3_button'])
+            if card_4_flipped == False:
+                flip_card_touch_up_inside(view['card_4_button'])
+            if card_5_flipped == False:
+                flip_card_touch_up_inside(view['card_5_button'])
+            bet_won = find_winner()
+            if bet_won:
+               money = money + bet
+            else:
+                money = money - bet
+            if money == 0:
+                view['money_label'].text = ' Total Money: ' + str(money)
+                view['reply_label'].text = "You're out of money. Press restart to play again."
+            else:
+                redraw_cards()
+        else:
+            view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
+    else:
+        if card_1_flipped == False:
+            flip_card_touch_up_inside(view['card_1_button'])
+        if card_2_flipped == False:
+            flip_card_touch_up_inside(view['card_2_button'])
+        if card_3_flipped == False:
+            flip_card_touch_up_inside(view['card_3_button'])
+        if card_4_flipped == False:
+            flip_card_touch_up_inside(view['card_4_button'])
+        if card_5_flipped == False:
+            flip_card_touch_up_inside(view['card_5_button'])
+        bet_won = find_winner()
+        if bet_won:
+           money = money + bet
+        else:
+            money = money - bet
+        if money == 0:
+            time.sleep(3)
+            view['money_label'].text = ' Total Money: ' + str(money)
+            view['reply_label'].text = view['reply_label'].text + "\nYou're out of money. Press restart to play again."
+        else:
+            redraw_cards()
 
 @ui.in_background
 
