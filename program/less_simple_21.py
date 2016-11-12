@@ -83,8 +83,6 @@ def set_up():
     view['reply_label'].text = ''
     
     view['card_6_instructions_label'].text = 'Press this card in order to recieve a third card.'
-    
-    view['ace_value_label'].text = 'First ace will be worth: '
 
 def randomize_card(card_number = ''):
     #When called this randomizes the card value of the inputted number and verifies that it is not the same as the other values
@@ -125,39 +123,59 @@ def ace_button_touch_up_inside(sender):
     
     if sender.name == 'ace_1_button' and ace_is_1 == False and ace_is_11 == False:
         ace_is_1 = True
-        view['ace_value_label'].text = view['ace_value_label'].text + str(1)
+        view['reply_label'].text = view['reply_label'].text + "\nAce will be worth: 1"
     elif sender.name == 'ace_11_button' and ace_is_1 == False and ace_is_11 == False:
         ace_is_11 = True
-        view['ace_value_label'].text = view['ace_value_label'].text + str(11)
+        view['reply_label'].text = view['reply_label'].text + "\nAce will be worth: 11"
 
 @ui.in_background
 
-def check_for_ace():
+def check_for_ace(card_name = ''):
     global player_cards
-    if card_4_flipped == True and card_5_flipped == True:
-        for ace_check in range(0, 2):
-           if player_cards[ace_check] == 1:
-               view['reply_label'].text = 'Would you like your first ace to be 1 or 11? All subsequent aces will be 1 since two 11s will bring you over 21.'
-               while True:
-                   if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
-                       break
-                   elif ace_is_1 == True:
-                       break
-                   elif ace_is_11 == True:
-                       player_cards[ace_check] = 11
-                       break
-    if card_4_flipped == True and card_5_flipped == True and card_6_used == True:
-        for ace_check in range(0, 3):
-            if player_cards[ace_check] == 1:
-                view['reply_label'].text = 'Would you like your first ace to be 1 or 11? All subsequent aces will be 1 since two 11s will bring you over 21.'
-                while True:
-                    if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
-                        break
-                    elif ace_is_1 == True:
-                        break
-                    elif ace_is_11 == True:
-                        player_cards[ace_check] = 11
-                        break
+    global ace_is_1
+    global ace_is_11
+    if card_name == 'card_4':
+        if player_cards[0] == 1:
+            view['reply_label'].text = 'Would you like your first card to be 1 or 11?'
+            while True:
+                if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
+                    view['reply_label'].text = view['reply_label'].text + "\nCard 1 will be worth: 1"
+                    break
+                elif ace_is_1 == True:
+                    ace_is_1 = False
+                    break
+                elif ace_is_11 == True:
+                    ace_is_11 = False
+                    player_cards[0] = 11
+                    break
+    if card_name == 'card_5':
+        if player_cards[1] == 1:
+            view['reply_label'].text = 'Would you like your second card to be 1 or 11?'
+            while True:
+                if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
+                    view['reply_label'].text = view['reply_label'].text + "\nCard 2 will be worth: 1"
+                    break
+                elif ace_is_1 == True:
+                    ace_is_1 = False
+                    break
+                elif ace_is_11 == True:
+                    ace_is_11 = False
+                    player_cards[1] = 11
+                    break
+    if card_name == 'card_6':
+        if player_cards[2] == 1:
+            view['reply_label'].text = 'Would you like your third card to be 1 or 11?'
+            while True:
+                if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
+                    view['reply_label'].text = view['reply_label'].text + "\nCard 3 will be worth: 1"
+                    break
+                elif ace_is_1 == True:
+                    ace_is_1 = False
+                    break
+                elif ace_is_11 == True:
+                    ace_is_11 = False
+                    player_cards[2] = 11
+                    break
 
 def check_bet():
     global bet
@@ -184,50 +202,56 @@ def flip_card_touch_up_inside(sender):
     global card_5_flipped
     global card_6_used
     
-    if sender.name == 'card_1_button':
+    if sender.name == 'card_1_button' and card_1_flipped == False:
         if bet_locked == False:
             if check_bet():
                 view['card_1_imageview'].image = ui.Image(card_1_value)
                 card_1_flipped = True
+                view['reply_label'].text = ''
             else:
                 view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
         else:
             view['card_1_imageview'].image = ui.Image(card_1_value)
             card_1_flipped = True
-    elif sender.name == 'card_2_button':
+            view['reply_label'].text = ''
+    elif sender.name == 'card_2_button' and card_2_flipped == False:
         if bet_locked == False:
             if check_bet():
                 view['card_2_imageview'].image = ui.Image(card_2_value)
                 card_2_flipped = True
+                view['reply_label'].text = ''
             else:
                 view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
         else:
             view['card_2_imageview'].image = ui.Image(card_2_value)
             card_2_flipped = True
-    elif sender.name == 'card_3_button':
+            view['reply_label'].text = ''
+    elif sender.name == 'card_3_button' and card_3_flipped == False:
         if bet_locked == False:
             if check_bet():
                 view['card_3_imageview'].image = ui.Image(card_3_value)
                 card_3_flipped = True
+                view['reply_label'].text = ''
             else:
                 view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
         else:
             view['card_3_imageview'].image = ui.Image(card_3_value)
             card_3_flipped = True
-    elif sender.name == 'card_4_button':
+            view['reply_label'].text = ''
+    elif sender.name == 'card_4_button' and card_4_flipped == False:
         view['card_4_imageview'].image = ui.Image(card_4_value)
         card_4_flipped = True
-        check_for_ace()
-    elif sender.name == 'card_5_button':
+        check_for_ace(card_name = 'card_4')
+    elif sender.name == 'card_5_button' and card_5_flipped == False:
         view['card_5_imageview'].image = ui.Image(card_5_value)
         card_5_flipped = True
-        check_for_ace()
-    elif sender.name == 'card_6_button':
+        check_for_ace(card_name = 'card_5')
+    elif sender.name == 'card_6_button' and card_6_used == False:
         if card_1_flipped == False and card_2_flipped == False and card_3_flipped == False:
             view['card_6_imageview'].image = ui.Image(card_6_value)
             view['card_6_instructions_label'].text = ''
             card_6_used = True
-            check_for_ace()
+            check_for_ace(card_name = 'card_6')
 
 def main_flow():
     
@@ -358,8 +382,6 @@ def redraw_cards():
     view['reply_label'].text = ''
     
     view['card_6_instructions_label'].text = 'Press this card in order to recieve a third card.'
-    
-    view['ace_value_label'].text = 'First ace will be worth: '
     
     main_flow()
 
