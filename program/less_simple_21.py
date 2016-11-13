@@ -86,6 +86,9 @@ def check_for_ace(card_name = ''):
     global player_cards
     global ace_is_1
     global ace_is_11
+    view['ace_explanation_label'].alpha = 1
+    view['ace_1_button'].alpha = 1
+    view['ace_11_button'].alpha = 1
     if card_name == 'card_4':
         if player_cards[0] == 1:
             view['reply_label'].text = 'Would you like your first card to be 1 or 11?'
@@ -128,6 +131,9 @@ def check_for_ace(card_name = ''):
                     ace_is_11 = False
                     player_cards[2] = 11
                     break
+    view['ace_explanation_label'].alpha = 0
+    view['ace_1_button'].alpha = 0.5
+    view['ace_11_button'].alpha = 0.5
 
 def check_bet():
     global bet
@@ -232,13 +238,7 @@ def set_up_cards():
     computer_cards = [DECK_VALUE[card_1_value], DECK_VALUE[card_2_value], DECK_VALUE[card_3_value]]
     player_cards = [DECK_VALUE[card_4_value], DECK_VALUE[card_5_value], DECK_VALUE[card_6_value]]
     
-    check_startup_bet = view['bet_textfield'].text
-    if check_startup_bet == '':
-        view['reply_label'].text = "Please enter a bet"
-    try:
-        check_startup_bet = int(check_startup_bet)
-    except:
-        view['reply_label'].text = "Please enter a bet that is a whole number."
+    view['reply_label'].text = "Please enter a bet"
 
 def find_winner():
     #finds the winner
@@ -291,7 +291,7 @@ def redraw_cards():
     
     for clean_up in range(0, 5):
         view['reply_label'].text = view['reply_label'].text + '.'
-        time.sleep(0.4)
+        time.sleep(0.6)
     
     global player_cards
     global computer_cards
@@ -401,5 +401,7 @@ def restart_touch_up_inside(sender):
 
 view = ui.load_view()
 view.present('fullscreen')
+
+view['bet_explanation_label'].text = 'Bet Rules:\n-> Bets must be whole numbers.\n-> Bets must be positive and not more than your total money.'
 
 redraw_cards()

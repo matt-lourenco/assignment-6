@@ -28,15 +28,15 @@
 
         ],
         "attributes" : {
-          "name" : "card_6_instructions_label",
-          "text_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "font_size" : 18,
+          "font_name" : "<System>",
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "8F44472A-82CC-45BA-8C7D-304D65D234B0",
           "class" : "Label",
           "alignment" : "center",
           "text" : "Press this card in order to recieve a third card.",
-          "font_size" : 18,
-          "font_name" : "<System>"
+          "name" : "card_6_instructions_label",
+          "text_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)"
         }
       },
       {
@@ -122,14 +122,14 @@
 
         ],
         "attributes" : {
-          "font_name" : "<System>",
+          "name" : "oppenents_cards_label",
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "F83294C6-409E-48DA-AF00-C86771D2C8CF",
           "class" : "Label",
           "alignment" : "center",
           "text" : "Opponent's Cards",
           "font_size" : 18,
-          "name" : "oppenents_cards_label"
+          "font_name" : "<System>"
         }
       },
       {
@@ -140,14 +140,14 @@
 
         ],
         "attributes" : {
-          "font_name" : "<System>",
+          "name" : "player_cards_label",
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "EA5A415C-2BD1-4E89-BC5F-CEBA13E3C48B",
           "class" : "Label",
           "alignment" : "center",
           "text" : "Your Cards",
           "font_size" : 18,
-          "name" : "player_cards_label"
+          "font_name" : "<System>"
         }
       },
       {
@@ -159,16 +159,16 @@
         ],
         "attributes" : {
           "border_width" : 1,
-          "font_size" : 18,
-          "font_name" : "<System>",
+          "name" : "reply_label",
+          "uuid" : "C942EFC3-FA83-4D89-BABA-BBF6B6C42CCB",
           "frame" : "{{437, 368}, {150, 32}}",
           "class" : "Label",
           "corner_radius" : 0,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Starting up",
           "alignment" : "center",
-          "name" : "reply_label",
-          "uuid" : "C942EFC3-FA83-4D89-BABA-BBF6B6C42CCB"
+          "font_size" : 18,
+          "font_name" : "<System>"
         }
       },
       {
@@ -200,16 +200,16 @@
         ],
         "attributes" : {
           "border_width" : 1,
-          "name" : "money_label",
-          "corner_radius" : 0,
+          "font_size" : 18,
+          "font_name" : "<System>",
           "frame" : "{{437, 368}, {150, 32}}",
           "class" : "Label",
+          "corner_radius" : 0,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : " Total Money: ",
           "alignment" : "left",
-          "uuid" : "2BEF74C8-E45F-4DF2-A7E4-46CC1DF68DB1",
-          "font_size" : 18,
-          "font_name" : "<System>"
+          "name" : "money_label",
+          "uuid" : "2BEF74C8-E45F-4DF2-A7E4-46CC1DF68DB1"
         }
       },
       {
@@ -220,15 +220,15 @@
 
         ],
         "attributes" : {
-          "name" : "bet_label",
-          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+          "font_size" : 18,
+          "font_name" : "<System>",
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "915A68E3-BCB5-428E-B5E5-39CB7E65F09F",
           "class" : "Label",
           "alignment" : "left",
           "text" : " Bet = ",
-          "font_size" : 18,
-          "font_name" : "<System>"
+          "name" : "bet_label",
+          "text_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)"
         }
       },
       {
@@ -245,10 +245,10 @@
           "secure" : false,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "border_width" : 1,
-          "alignment" : "right",
+          "alignment" : "center",
           "autocorrection_type" : "default",
           "text_color" : "RGBA(0.034598,0.061321,0.034598,1.000000)",
-          "placeholder" : "$$$$$$$$$$$$$$",
+          "placeholder" : "Enter Bet Here",
           "font_name" : "<System>",
           "spellchecking_type" : "default",
           "class" : "TextField",
@@ -257,23 +257,25 @@
         }
       },
       {
-        "selected" : false,
+        "selected" : true,
         "frame" : "{{863, 448}, {100, 49}}",
         "class" : "Button",
         "nodes" : [
 
         ],
         "attributes" : {
-          "action" : "ace_button_touch_up_inside",
-          "border_width" : 1,
-          "frame" : "{{472, 368}, {80, 32}}",
-          "title" : "Ace = 1",
-          "class" : "Button",
           "uuid" : "849AEB45-1E11-46B4-894F-158385D4A2A1",
           "corner_radius" : 0,
+          "frame" : "{{472, 368}, {80, 32}}",
           "border_color" : "RGBA(0.600000,0.733333,1.000000,1.000000)",
-          "font_size" : 21,
-          "name" : "ace_1_button"
+          "border_width" : 1,
+          "title" : "Ace = 1",
+          "action" : "ace_button_touch_up_inside",
+          "alpha" : 0.5,
+          "font_bold" : false,
+          "class" : "Button",
+          "name" : "ace_1_button",
+          "font_size" : 21
         }
       },
       {
@@ -286,6 +288,7 @@
         "attributes" : {
           "action" : "ace_button_touch_up_inside",
           "border_width" : 1,
+          "alpha" : 0.5,
           "frame" : "{{472, 368}, {80, 32}}",
           "title" : "Ace = 11",
           "class" : "Button",
@@ -382,7 +385,7 @@
         }
       },
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{682, 400}, {140, 210}}",
         "class" : "Button",
         "nodes" : [
@@ -407,14 +410,15 @@
 
         ],
         "attributes" : {
-          "font_size" : 18,
+          "font_name" : "<System>",
+          "alpha" : 0,
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "1F4C0DD0-5FDA-40DC-8D54-16BC507B5B9C",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Choose one:",
-          "name" : "ace_explanation_label",
-          "font_name" : "<System>"
+          "font_size" : 18,
+          "name" : "ace_explanation_label"
         }
       },
       {
@@ -439,24 +443,20 @@
       },
       {
         "selected" : false,
-        "frame" : "{{26, 10}, {166, 250}}",
-        "class" : "TextView",
+        "frame" : "{{26, 10}, {166, 183}}",
+        "class" : "Label",
         "nodes" : [
 
         ],
         "attributes" : {
-          "uuid" : "6C57A848-F6F2-4DD2-A820-B8CE3C7481DE",
-          "flex" : "WH",
-          "frame" : "{{412, 284}, {200, 200}}",
-          "editable" : true,
-          "alignment" : "left",
-          "autocorrection_type" : "default",
-          "text" : "Bet Rules:\n-Bets must be less than your total money but more than 0\n-Bets must be integers",
           "font_name" : "<System>",
-          "spellchecking_type" : "default",
-          "class" : "TextView",
-          "name" : "bet_explanation_textview",
-          "font_size" : 17
+          "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "D2505443-5F43-441F-A389-A70C7E146F69",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "",
+          "name" : "bet_explanation_label",
+          "font_size" : 18
         }
       }
     ],
