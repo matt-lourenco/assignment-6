@@ -122,13 +122,13 @@
 
         ],
         "attributes" : {
-          "name" : "oppenents_cards_label",
+          "font_size" : 18,
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "F83294C6-409E-48DA-AF00-C86771D2C8CF",
           "class" : "Label",
           "alignment" : "center",
           "text" : "Opponent's Cards",
-          "font_size" : 18,
+          "name" : "oppenents_cards_label",
           "font_name" : "<System>"
         }
       },
@@ -140,13 +140,13 @@
 
         ],
         "attributes" : {
-          "name" : "player_cards_label",
+          "font_size" : 18,
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "EA5A415C-2BD1-4E89-BC5F-CEBA13E3C48B",
           "class" : "Label",
           "alignment" : "center",
           "text" : "Your Cards",
-          "font_size" : 18,
+          "name" : "player_cards_label",
           "font_name" : "<System>"
         }
       },
@@ -160,13 +160,13 @@
         "attributes" : {
           "border_width" : 1,
           "name" : "reply_label",
-          "uuid" : "C942EFC3-FA83-4D89-BABA-BBF6B6C42CCB",
+          "alignment" : "center",
           "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "C942EFC3-FA83-4D89-BABA-BBF6B6C42CCB",
           "class" : "Label",
           "corner_radius" : 0,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : "Starting up",
-          "alignment" : "center",
           "font_size" : 18,
           "font_name" : "<System>"
         }
@@ -203,13 +203,13 @@
           "font_size" : 18,
           "font_name" : "<System>",
           "frame" : "{{437, 368}, {150, 32}}",
+          "uuid" : "2BEF74C8-E45F-4DF2-A7E4-46CC1DF68DB1",
           "class" : "Label",
           "corner_radius" : 0,
           "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
           "text" : " Total Money: ",
-          "alignment" : "left",
           "name" : "money_label",
-          "uuid" : "2BEF74C8-E45F-4DF2-A7E4-46CC1DF68DB1"
+          "alignment" : "left"
         }
       },
       {
@@ -257,7 +257,7 @@
         }
       },
       {
-        "selected" : true,
+        "selected" : false,
         "frame" : "{{863, 448}, {100, 49}}",
         "class" : "Button",
         "nodes" : [
@@ -410,15 +410,15 @@
 
         ],
         "attributes" : {
-          "font_name" : "<System>",
           "alpha" : 0,
+          "font_name" : "<System>",
           "frame" : "{{437, 368}, {150, 32}}",
           "uuid" : "1F4C0DD0-5FDA-40DC-8D54-16BC507B5B9C",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Choose one:",
-          "font_size" : 18,
-          "name" : "ace_explanation_label"
+          "name" : "ace_explanation_label",
+          "font_size" : 18
         }
       },
       {
@@ -455,8 +455,8 @@
           "class" : "Label",
           "alignment" : "left",
           "text" : "",
-          "name" : "bet_explanation_label",
-          "font_size" : 18
+          "font_size" : 18,
+          "name" : "bet_explanation_label"
         }
       }
     ],

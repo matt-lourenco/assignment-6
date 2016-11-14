@@ -7,6 +7,7 @@ from numpy import random
 import ui
 import time
 
+#Here I define all variables that will be used between different functions
 DECK = ['card:ClubsA', 'card:DiamondsA', 'card:HeartsA', 'card:SpadesA', 'card:Clubs2', 'card:Diamonds2', 'card:Hearts2', 'card:Spades2', 'card:Clubs3', 'card:Diamonds3', 'card:Hearts3', 'card:Spades3', 'card:Clubs4', 'card:Diamonds4', 'card:Hearts4', 'card:Spades4', 'card:Clubs5', 'card:Diamonds5', 'card:Hearts5', 'card:Spades5', 'card:Clubs6', 'card:Diamonds6', 'card:Hearts6', 'card:Spades6', 'card:Clubs7', 'card:Diamonds7', 'card:Hearts7', 'card:Spades7', 'card:Clubs8', 'card:Diamonds8', 'card:Hearts8', 'card:Spades8', 'card:Clubs9', 'card:Diamonds9', 'card:Hearts9', 'card:Spades9', 'card:Clubs10', 'card:Diamonds10', 'card:Hearts10', 'card:Spades10', 'card:ClubsJ', 'card:DiamondsJ', 'card:HeartsJ', 'card:SpadesJ', 'card:ClubsQ', 'card:DiamondsQ', 'card:HeartsQ', 'card:SpadesQ', 'card:ClubsK', 'card:DiamondsK', 'card:HeartsK', 'card:SpadesK']
 
 DECK_VALUE = {'card:ClubsA':1, 'card:DiamondsA':1, 'card:HeartsA':1, 'card:SpadesA':1, 'card:Clubs2':2, 'card:Diamonds2':2, 'card:Hearts2':2, 'card:Spades2':2, 'card:Clubs3':3, 'card:Diamonds3':3, 'card:Hearts3':3, 'card:Spades3':3, 'card:Clubs4':4, 'card:Diamonds4':4, 'card:Hearts4':4, 'card:Spades4':4, 'card:Clubs5':5, 'card:Diamonds5':5, 'card:Hearts5':5, 'card:Spades5':5, 'card:Clubs6':6, 'card:Diamonds6':6, 'card:Hearts6':6, 'card:Spades6':6, 'card:Clubs7':7, 'card:Diamonds7':7, 'card:Hearts7':7, 'card:Spades7':7, 'card:Clubs8':8, 'card:Diamonds8':8, 'card:Hearts8':8, 'card:Spades8':8, 'card:Clubs9':9, 'card:Diamonds9':9, 'card:Hearts9':9, 'card:Spades9':9, 'card:Clubs10':10, 'card:Diamonds10':10, 'card:Hearts10':10, 'card:Spades10':10, 'card:ClubsJ':10, 'card:DiamondsJ':10, 'card:HeartsJ':10, 'card:SpadesJ':10, 'card:ClubsQ':10, 'card:DiamondsQ':10, 'card:HeartsQ':10, 'card:SpadesQ':10, 'card:ClubsK':10, 'card:DiamondsK':10, 'card:HeartsK':10, 'card:SpadesK':10}
@@ -37,7 +38,7 @@ ace_is_1 = False
 ace_is_11 = False
 
 def randomize_card(card_number = ''):
-    #When called this randomizes the card value of the inputted number and verifies that it is not the same as the other values
+    #When called this randomizes the card value of the inputted card number and verifies that it is not the same as the other values
     global card_1_value
     global card_2_value
     global card_3_value
@@ -70,6 +71,7 @@ def randomize_card(card_number = ''):
         random_card_value = random.randint(0, 52)
 
 def ace_button_touch_up_inside(sender):
+    #When this is called it checks which button has been pressed then sends it to another function through a variable
     global ace_is_1
     global ace_is_11
     
@@ -83,15 +85,16 @@ def ace_button_touch_up_inside(sender):
 @ui.in_background
 
 def check_for_ace(card_name = ''):
+    #When called this function checks for an ace based on which card has been pressed. It the  uses the above function to decide what to set the value of the ace to.
     global player_cards
     global ace_is_1
     global ace_is_11
-    view['ace_explanation_label'].alpha = 1
-    view['ace_1_button'].alpha = 1
-    view['ace_11_button'].alpha = 1
     if card_name == 'card_4':
         if player_cards[0] == 1:
             view['reply_label'].text = 'Would you like your first card to be 1 or 11?'
+            view['ace_explanation_label'].alpha = 1
+            view['ace_1_button'].alpha = 1
+            view['ace_11_button'].alpha = 1
             while True:
                 if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
                     view['reply_label'].text = view['reply_label'].text + "\nCard 1 will be worth: 1"
@@ -106,6 +109,9 @@ def check_for_ace(card_name = ''):
     if card_name == 'card_5':
         if player_cards[1] == 1:
             view['reply_label'].text = 'Would you like your second card to be 1 or 11?'
+            view['ace_explanation_label'].alpha = 1
+            view['ace_1_button'].alpha = 1
+            view['ace_11_button'].alpha = 1
             while True:
                 if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
                     view['reply_label'].text = view['reply_label'].text + "\nCard 2 will be worth: 1"
@@ -120,6 +126,9 @@ def check_for_ace(card_name = ''):
     if card_name == 'card_6':
         if player_cards[2] == 1:
             view['reply_label'].text = 'Would you like your third card to be 1 or 11?'
+            view['ace_explanation_label'].alpha = 1
+            view['ace_1_button'].alpha = 1
+            view['ace_11_button'].alpha = 1
             while True:
                 if card_1_flipped == True or card_2_flipped == True or card_3_flipped == True:
                     view['reply_label'].text = view['reply_label'].text + "\nCard 3 will be worth: 1"
@@ -136,6 +145,7 @@ def check_for_ace(card_name = ''):
     view['ace_11_button'].alpha = 0.5
 
 def check_bet():
+    #This function checks if the bet has been locked then checks if it is a valid number. It then returns true only if the bet is valid or if the bet has already been checked and locked in place.
     global bet
     global bet_locked
     if bet_locked == False:
@@ -153,6 +163,7 @@ def check_bet():
     return True
 
 def flip_card_touch_up_inside(sender):
+    #When called this function takes which card has been pressed then decides what to do. If the card flipped is one of the opponent's cards it tries to lock the bet in. If that fails the opponents card is not flipped. If the card pressed is a player card it runs the function that checks for an ace. If the card pressed is card 6 it makes sure that none of the opponent's cards have been flipped before flipping card 6.
     global computer_cards_flipped	
     global card_1_flipped
     global card_2_flipped
@@ -199,7 +210,7 @@ def flip_card_touch_up_inside(sender):
             check_for_ace(card_name = 'card_6')
 
 def set_up_cards():
-    
+    #This function sets up the game by randomizing the cards and organizing the player and computer card arrays.
     global card_1_value
     global card_2_value
     global card_3_value
@@ -229,7 +240,6 @@ def set_up_cards():
 
 def find_winner():
     #finds the winner
-    #process
     global computer_cards
     global player_cards
     
@@ -240,6 +250,7 @@ def find_winner():
     for computer_total_index in computer_cards:
         computer_cards_total = computer_cards_total + computer_total_index
     
+    #if the computer cards are below 12 and the computer posseses an ace the ace will be worth 11
     for computer_ace_check in computer_cards:
         if computer_ace_check == 1 and computer_cards_total < 12:
             computer_cards_total = computer_cards_total + 10
@@ -250,7 +261,6 @@ def find_winner():
     else:
         player_cards_total = player_cards[0] + player_cards[1]
     
-    #output
     #decide the winner by comparing the totals
     if player_cards_total == computer_cards_total:
         view['reply_label'].text = "You lost. \n Opponent's total: " + str(computer_cards_total) + "\n Your total: " + str(player_cards_total)
@@ -275,7 +285,7 @@ def find_winner():
 @ui.in_background
 
 def redraw_cards():
-    
+    #This function will set up the game and reset the game without changing the total money.
     for clean_up in range(0, 5):
         view['reply_label'].text = view['reply_label'].text + '.'
         time.sleep(0.6)
@@ -329,6 +339,7 @@ def redraw_cards():
 @ui.in_background
 
 def check_touch_up_inside(sender):
+    #When called this function flips remaining cards with the exception of card 6 then finds the winner then decides what to do based on the bet amount and total money. It then redraws the cards by running the above function
     global money
     
     if check_bet():
@@ -349,7 +360,7 @@ def check_touch_up_inside(sender):
             money = money - bet
         if money == 0:
             time.sleep(2)
-            view['money_label'].text = ' Total Money: ' + str(money)
+            view['money_label'].text = ' Total Money: $' + str(money)
             view['reply_label'].text = "You're out of money. Press restart to play again."
         else:
             redraw_cards()
@@ -357,7 +368,7 @@ def check_touch_up_inside(sender):
             view['reply_label'].text = "Please enter a valid bet before flipping the opponent's cards."
 
 def restart_touch_up_inside(sender):
-    #restarts the game
+    #When called completely restarts the game
     global money
     view['reply_label'].text = 'Restarting'
     money = 100
@@ -366,6 +377,7 @@ def restart_touch_up_inside(sender):
 view = ui.load_view()
 view.present('fullscreen')
 
+#these line do the first time setup on startup.
 view['bet_explanation_label'].text = 'Bet Rules:\n-> Bets must be whole numbers.\n-> Bets must be positive and not more than your total money.'
 
 redraw_cards()
